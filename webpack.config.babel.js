@@ -2,8 +2,7 @@ import webpack from 'webpack';
 import path from 'path';
 import config from './package.json';
 
-export const outputName = 'array-to-keymirror';
-export const globalName = 'arrayToKeyMirror';
+export const outputName = 'mirrarray';
 
 export default {
   entry: './index.js',
@@ -17,7 +16,7 @@ export default {
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: `${outputName}.js`,
-    library: globalName,
+    library: outputName,
     libraryTarget: 'umd',
   },
   plugins: [

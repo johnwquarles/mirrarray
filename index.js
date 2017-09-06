@@ -1,1 +1,4 @@
-export { default } from './src/index';
+const arrayToKeyMirror = arr =>
+  arr.reduce((acc, key) => (acc[key] = key) && acc, {});
+
+export default arrayToKeyMirror;

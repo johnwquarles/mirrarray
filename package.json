@@ -1,0 +1,24 @@
+{
+  "name": "array-to-keymirror",
+  "version": "1.0.0",
+  "description": "Very simple package for creating a keymirror object from an array of strings",
+  "main": "dist/array-to-keymirror.js",
+  "unpkg": "dist/array-to-keymirror.browser.js",
+  "main": "dist/array-to-keymirror.common.js",
+  "module": "index.js",
+  "repository": "git@github.com:johnwquarles/array-to-keymirror.git",
+  "author": "John Wiley Quarles <john.w.quarles@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --config webpack.config.babel.js --progress --hide-modules",
+    "prepublish": "npm run build"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.26.0",
+    "webpack": "^3.5.5",
+    "webpack-merge": "^4.1.0"
+  }
+}

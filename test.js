@@ -74,3 +74,15 @@ test('Will coerce null, undefined & booleans to strings for use as keys', () => 
     'true': true,
   });
 });
+
+test('Will allow for multiples of the same key as long as they\'re the same type', () => {
+  expect(mirrarray(['a', 'a', 'a'])).toEqual({a: 'a'});
+  expect(mirrarray([1, 1, 1])).toEqual({1: 1});
+});
+
+test('Will not allow for distinct elements to coerce to the same string', () => {
+  expect(mirrarray.bind(null, validInputs.concat(['true', true]))).toThrowError(MirrarrayError);
+  expect(mirrarray.bind(null, validInputs.concat(['undefined', undefined]))).toThrowError(MirrarrayError);
+  expect(mirrarray.bind(null, validInputs.concat(['null', null]))).toThrowError(MirrarrayError);
+  expect(mirrarray.bind(null, validInputs.concat(['1234', 1234]))).toThrowError(MirrarrayError);
+});

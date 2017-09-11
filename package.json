@@ -1,5 +1,5 @@
 {
-  "name": "array-to-keymirror",
+  "name": "mirrarray",
   "version": "1.0.0",
   "description": "Very simple package for creating a keymirror object from an array of strings",
   "main": "dist/mirrarray.js",
@@ -7,7 +7,12 @@
   "module": "index.js",
   "repository": "git@github.com:johnwquarles/mirrarray.git",
   "author": "John Wiley Quarles <john.w.quarles@gmail.com>",
+  "keywords": ["keymirror", "key-mirror"],
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johnwquarles/mirrarray/issues"
+  },
+  "homepage": "https://github.com/johnwquarles/mirrarray#readme",
   "scripts": {
     "build": "webpack --config webpack.config.babel.js --progress --hide-modules",
     "coverage": "jest --coverage",

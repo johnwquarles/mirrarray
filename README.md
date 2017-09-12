@@ -8,11 +8,20 @@
 
 A very simple module for creating a keymirror object from an array of keys.
 
-### Usage
+## Installation
+
+```bash
+yarn add mirrarray
+```
+
+If you don't yet have Yarn installed, please see the documentation here:
+https://yarnpkg.com/lang/en/docs/install/
+
+## Usage
 
 Import & pass `mirrarray` an array full of keys.
 
-```
+```javascript
 import mirrarray from 'mirrarray';
 
 const keymirror = mirrarray(['this', 'that', 'another']);
@@ -20,7 +29,7 @@ const keymirror = mirrarray(['this', 'that', 'another']);
 
 Now `keymirror` is an object containing key/value pairs for each element in the input array.
 
-```
+```javascript
 {
   this: 'this',
   that: 'that',
@@ -28,7 +37,7 @@ Now `keymirror` is an object containing key/value pairs for each element in the 
 }
 ```
 
-### Usable Key Types
+## Usable Key Types
 
 - string
 - number

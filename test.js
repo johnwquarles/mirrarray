@@ -47,30 +47,13 @@ test('Throws error if input array contains element of a type that cannot be (int
 });
 
 test('Will coerce null, undefined & booleans to strings for use as keys', () => {
-  expect(mirrarray(validInputs.concat(null))).toEqual({
-    // Quotes again used where appropriate to emphasize coersion into strings.
-    a: 'a',
-    b: 'b',
-    c: 'c',
-    'null': null,
-  });
-  expect(mirrarray(validInputs.concat(undefined))).toEqual({
-    a: 'a',
-    b: 'b',
-    c: 'c',
-    'undefined': undefined,
-  });
-  expect(mirrarray(validInputs.concat(false))).toEqual({
-    a: 'a',
-    b: 'b',
-    c: 'c',
-    'false': false,
-  });
-  expect(mirrarray(validInputs.concat(true))).toEqual({
-    a: 'a',
-    b: 'b',
-    c: 'c',
-    'true': true,
+  [null, undefined, false, true].forEach(val => {
+    expect(mirrarray(validInputs.concat(val))).toEqual({
+      a: 'a',
+      b: 'b',
+      c: 'c',
+      [val]: val,
+    });
   });
 });
 

@@ -31,8 +31,7 @@ test('Returns key mirror object as expected for an array of numbers', () => {
 test('Throws error if input type is not Array', () => {
   const invalidInputs = [{}, 'a_string', 1234, true, undefined, null];
   invalidInputs.forEach(invalidInput =>
-    expect(mirrarray.bind(null, invalidInput)).toThrowError(MirrarrayError),
-  );
+    expect(mirrarray.bind(null, invalidInput)).toThrowError(MirrarrayError));
 });
 
 const validInputs = ['a', 'b', 'c'];

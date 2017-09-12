@@ -1,4 +1,11 @@
 # Mirrarray
+[![Build Status](https://travis-ci.org/johnwquarles/mirrarray.svg?branch=master)](https://travis-ci.org/johnwquarles/mirrarray)
+![Coverage Status](https://coveralls.io/repos/github/johnwquarles/mirrarray/badge.svg?branch=master)
+![CodeClimate GPA](https://img.shields.io/codeclimate/github/johnwquarles/mirrarray.svg)
+![NPM Downloads/Week](https://img.shields.io/npm/dw/mirrarray.svg)
+![NPM Downloads All Versions](https://img.shields.io/npm/dt/mirrarray.svg)
+![Version](https://img.shields.io/npm/v/mirrarray.svg)
+
 A very simple module for creating a keymirror object from an array of keys.
 
 ### Usage

@@ -1,6 +1,6 @@
 {
   "name": "mirrarray",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Very simple package for creating a keymirror object from an array of strings",
   "main": "dist/mirrarray.js",
   "unpkg": "dist/mirrarray.js",

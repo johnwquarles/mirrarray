@@ -21,11 +21,22 @@ https://yarnpkg.com/lang/en/docs/install/
 
 Import & pass `mirrarray` an array full of keys.
 
+
+es6 module syntax:
 ```javascript
 import mirrarray from 'mirrarray';
 
 const keymirror = mirrarray(['this', 'that', 'another']);
 ```
+
+or commonjs:
+```javascript
+var mirrarray = require("mirrarray");
+
+var keymirror = mirrarray(['this', 'that', 'another']);
+```
+
+_Please note_ that the commonjs example above is current to version 2.0.0. Earlier versions would have required you to enter `require("mirrarray").default`, but this was undocumented. Usage via es6 module syntax has not been changed.
 
 Now `keymirror` is an object containing key/value pairs for each element in the input array.
 

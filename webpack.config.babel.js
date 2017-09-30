@@ -17,6 +17,7 @@ export default {
     path: path.resolve(__dirname, './dist'),
     filename: `${outputName}.js`,
     library: outputName,
+    libraryExport: 'default',
     libraryTarget: 'umd',
   },
   plugins: [

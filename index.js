@@ -26,7 +26,7 @@ const nonOverlappingKey = element => {
 let keysSeen;
 
 const arrayToKeyMirror = arr => {
-  keysSeen = {};
+  keysSeen = Object.create(null);
   if (!Array.isArray(arr)) {
     throw new MirrarrayError('Input to mirrarray must be an array!');
   }
@@ -39,7 +39,7 @@ const arrayToKeyMirror = arr => {
     }
     acc[key] = key;
     return acc;
-  }, {});
+  }, Object.create(null));
 };
 
 export default arrayToKeyMirror;

@@ -1,31 +1,36 @@
-import webpack from 'webpack';
-import path from 'path';
-import config from './package.json';
+import path from "path";
+import TerserWebpackPlugin from "terser-webpack-plugin";
 
-export const outputName = 'mirrarray';
+export const outputName = "mirrarray";
 
 export default {
-  entry: './index.js',
+  entry: "./index.js",
+  target: "es5",
   module: {
-    rules: [{
-      test: /\.js$/,
-      loader: 'babel-loader',
-      exclude: /node_modules/,
-    }],
+    rules: [
+      {
+        test: /\.js$/,
+        loader: "babel-loader",
+        exclude: /node_modules/,
+      },
+    ],
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
+    globalObject: "this",
+    path: path.resolve(__dirname, "./dist"),
     filename: `${outputName}.js`,
     library: outputName,
-    libraryExport: 'default',
-    libraryTarget: 'umd',
+    libraryExport: "default",
+    libraryTarget: "umd",
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: true,
+    new TerserWebpackPlugin({
+      terserOptions: {
+        compress: {
+          warnings: true,
+        },
+        mangle: false,
       },
-      mangle: false,
     }),
   ],
 };

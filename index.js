@@ -1,45 +1,38 @@
-function MirrarrayError() {}
-MirrarrayError.prototype = Object.create(Error.prototype);
+/* app imports */
+const isValidArrayValue = require("./service/is-valid-key.js");
+const isOverlappingKey = require("./service/is-non-overlapping-key.js");
 
-const isValidKey = element => {
-  const isNull = element === null;
-  return ['string', 'number', 'boolean', 'undefined'].includes(typeof element) || isNull;
-}
-
-const nonOverlappingKey = element => {
-  /**
-   * Ensure we don't have distinct elements that coerce to the same key, leading to unexpected results.
-   * For example, input of [true, 'true'] would return a keymirror of {true: 'true'} despite containing two distinct elements
-   * if we didn't make this check.
-   */
-  const isNull = element === null;
-  const typeSeenBefore = keysSeen['' + element];
-  const thisType = isNull ? 'null' : typeof element;
-  if (typeSeenBefore) {
-    return typeSeenBefore === thisType;
-  } else {
-    keysSeen['' + element] = thisType;
-    return true;
-  }
-}
-
-let keysSeen;
-
-const arrayToKeyMirror = arr => {
-  keysSeen = {};
-  if (!Array.isArray(arr)) {
-    throw new MirrarrayError('Input to mirrarray must be an array!');
-  }
-  return arr.reduce((acc, key) => {
-    if (!isValidKey(key)) {
-      throw new MirrarrayError('Invalid element contained within input array; each element must be either a string or number!');
+module.exports = (array) => {
+  try {
+    if (!Array.isArray(array)) {
+      throw new Error("Input to mirrarray must be an array!");
     }
-    if (!nonOverlappingKey(key)) {
-      throw new MirrarrayError('Distinct elements in the input array are coercing to the same string!');
+    else if (array.length === 0) {
+      return {};
     }
-    acc[key] = key;
-    return acc;
-  }, {});
+    else {
+      /* dont need to create another object for checking, use the accumulator as a part of 
+         the 'isOverlappingKey' check */
+      let mirrorObject = array.reduce((acc, value) => {
+        if (!isValidArrayValue(value)) {
+          throw new Error("Invalid element contained within input array; each element must Null, Boolean, String, Number or Undefined Types only!");
+        }
+        else if (isOverlappingKey(value, acc)) {
+          throw new Error("Distinct elements in the input array are coercing to the same string!");
+        }
+        else {
+          /* make the updates here */
+          let key = String(value);
+          acc[key] = value;
+          return acc;
+        }
+      }, {});
+
+      /* return to caller */
+      return mirrorObject;
+    }
+  }
+  catch (error) {
+    throw new Error(error);
+  }
 };
-
-export default arrayToKeyMirror;
